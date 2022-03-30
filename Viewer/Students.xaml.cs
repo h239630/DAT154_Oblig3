@@ -31,13 +31,17 @@ namespace Viewer
             entities = context;
 
             student = entities.student;
+
+            student.Load();
+            studentList.DataContext = student.Local;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (SearchField.Text == "")
+            if (SearchField.Text == "Search for student by name..")
             {
-                studentList.DataContext = student.Local;
+                if (student != null)
+                    studentList.DataContext = student.Local;
             }
             else
             {

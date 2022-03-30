@@ -9,7 +9,7 @@
         Background="BlanchedAlmond">
 
     <Grid>
-        <ListView Name="studentList" ItemsSource="{Binding}" Margin="100,0,100,50" Background="AliceBlue">
+        <ListView Name="studentList" ItemsSource="{Binding}" Margin="100,0,100,84" Background="AliceBlue">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -21,6 +21,7 @@
             </ListView.View>
         </ListView>
         <Button Content="Manage Students" Margin="0,0,140,10" Width="100" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
-        <TextBox Name="SearchField" TextWrapping="Wrap" Text="" Background="LightBlue" Foreground="Gray" Margin="100,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" TextChanged="TextBox_TextChanged"/>
+        <TextBox Name="SearchField" TextWrapping="Wrap" Text="" Background="LightBlue" Margin="100,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" TextChanged="TextBox_TextChanged"/>
+        <Label Content="Search for student by name:" Margin="100,0,0,35" FontWeight="Bold" HorizontalAlignment="Left" Width="180" Height="30" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
