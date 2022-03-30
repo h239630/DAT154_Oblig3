@@ -15,9 +15,7 @@ using System.Windows.Shapes;
 
 namespace Viewer
 {
-    /// <summary>
-    /// Interaction logic for Courses.xaml
-    /// </summary>
+    
     public partial class Courses : Window
     {
         private dat154Entities dbContext = new dat154Entities();
@@ -36,17 +34,9 @@ namespace Viewer
             courseList.DataContext = course.Local;
         }
 
-        private void Search(object sender, TextChangedEventArgs e)
+        public void View(object sender, RoutedEventArgs e)
         {
-            if (SearchField.Text == "")
-            {
-                if (course != null)
-                    courseList.DataContext = course.Local;
-            }
-            else
-            {
-                courseList.DataContext = course.Local.Where(course => course.coursename.Contains(SearchField.Text));
-            }
+            new StudentsInCourse(dbContext).ShowDialog();
         }
     }
 }

@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Viewer"
         mc:Ignorable="d"
-        Title="Courses" Height="600" Width="800"
+        Title="Courses" Height="400" Width="800"
         Background="BlanchedAlmond">
     <Grid>
-        <ListView Name="courseList" ItemsSource="{Binding}" Margin="100,0,100,84" Background="AliceBlue">
+        <ListView Name="courseList" ItemsSource="{Binding}" Margin="100,0,100,84" Background="AliceBlue" MouseDoubleClick="View">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -20,8 +20,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <!--<Button Content="Manage Students" Margin="0,0,140,10" Width="100" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" />-->
-        <TextBox Name="SearchField" TextWrapping="Wrap" Text="" Background="LightBlue" Margin="100,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" TextChanged="Search"/>
-        <Label Content="Search for course by name:" Margin="100,0,0,35" FontWeight="Bold" HorizontalAlignment="Left" Width="180" Height="30" VerticalAlignment="Bottom"/>
+        <Label Content="Double-Click a course to view all students" Margin="0,330,0,0" FontWeight="Bold" HorizontalAlignment="Center" Width="261" Height="30" VerticalAlignment="Top"/>
     </Grid>
 </Window>

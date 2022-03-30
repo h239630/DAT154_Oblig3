@@ -15,23 +15,31 @@ using System.Windows.Shapes;
 
 namespace Viewer
 {
-    
-    public partial class Students : Window
+   
+    public partial class StudentsInCourse : Window
     {
         private dat154Entities dbContext = new dat154Entities();
         private DbSet<student> student;
-        public Students()
+        private DbSet<grade> grade;
+        public StudentsInCourse()
         {
             InitializeComponent();
         }
-        public Students(dat154Entities context) : this()
+        public StudentsInCourse(dat154Entities context) : this()
         {
             dbContext = context;
 
             student = dbContext.student;
+            grade = dbContext.grade;
 
             student.Load();
-            studentList.DataContext = student.Local;
+            grade.Load();
+
+            student stud = new student();
+
+            stud.grade = grade.Local;
+
+            studentGradeList.DataContext = student.Local;
         }
 
         private void Search(object sender, TextChangedEventArgs e)
@@ -39,18 +47,18 @@ namespace Viewer
             if (SearchField.Text == "")
             {
                 if (student != null)
-                    studentList.DataContext = student.Local;
+                    studentGradeList.DataContext = student.Local;
             }
             else
             {
-                studentList.DataContext = student.Local.Where(student => student.studentname.Contains(SearchField.Text));
+                studentGradeList.DataContext = student.Local.Where(student => student.studentname.Contains(SearchField.Text));
             }
         }
 
         private void Edit(object sender, RoutedEventArgs e)
         {
-            student student = (student)studentList.SelectedItem;
-            new Editor(dbContext, student).ShowDialog(); 
+            student student = (student)studentGradeList.SelectedItem;
+            new Editor(dbContext, student).ShowDialog();
         }
     }
 }
