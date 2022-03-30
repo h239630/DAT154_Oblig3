@@ -20,7 +20,7 @@ namespace Viewer
     /// </summary>
     public partial class Courses : Window
     {
-        private dat154Entities entities = new dat154Entities();
+        private dat154Entities dbContext = new dat154Entities();
         private DbSet<course> course;
         public Courses()
         {
@@ -29,8 +29,8 @@ namespace Viewer
 
         public Courses(dat154Entities context) : this()
         {
-            entities = context;
-            course = entities.course;
+            dbContext = context;
+            course = dbContext.course;
 
             course.Load();
             courseList.DataContext = course.Local;

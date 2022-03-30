@@ -20,7 +20,7 @@ namespace Viewer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private dat154Entities entities = new dat154Entities();
+        private dat154Entities dbContext = new dat154Entities();
 
         public MainWindow()
         {
@@ -29,17 +29,17 @@ namespace Viewer
 
         private void View_Students_Click(object sender, RoutedEventArgs e)
         {
-            new Students(entities).ShowDialog();
+            new Students(dbContext).ShowDialog();
         }
 
         private void View_Grades_Click(object sender, RoutedEventArgs e)
         {
-            new Grades(entities).ShowDialog();  
+            new Grades(dbContext).ShowDialog();  
         }
 
         private void View_Courses_Click(object sender, RoutedEventArgs e)
         {
-            new Courses(entities).ShowDialog();
+            new Courses(dbContext).ShowDialog();
         }
     }
 }

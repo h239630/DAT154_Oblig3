@@ -14,6 +14,9 @@
         <Label Content="ID" Margin="0,0,580,287" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" Width="120" Height="37" VerticalAlignment="Bottom"/>
         <Label Content="Student name" HorizontalAlignment="Center" Margin="0,0,0,287" Width="280" FontWeight="Bold" FontSize="20" Height="37" VerticalAlignment="Bottom"/>
         <Label Content="Age" Margin="0,0,109,287" FontWeight="Bold" FontSize="20" Height="37" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
+        <Button Content="Add new Student" BorderThickness="4px" HorizontalAlignment="Left" Margin="80,220,0,0" VerticalAlignment="Top" Height="80" Width="160" FontWeight="Bold" FontSize="18" Click="Add_Student"/>
+        <Button Content="Delete Student" BorderThickness="4px" HorizontalAlignment="Right" Margin="0,220,320,0" VerticalAlignment="Top" Height="80" Width="160" FontSize="18" FontWeight="Bold" Click="Delete_Student"/>
+        <Button Content="Edit Student" BorderThickness="4px" HorizontalAlignment="Left" Margin="570,220,0,0" VerticalAlignment="Top" Height="80" Width="160" FontSize="18" FontWeight="Bold" Click="Edit_Student"/>
 
     </Grid>
 </Window>

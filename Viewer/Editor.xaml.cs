@@ -19,7 +19,7 @@ namespace Viewer
     /// </summary>
     public partial class Editor : Window
     {
-        private dat154Entities entities = new dat154Entities();
+        private dat154Entities dbContext = new dat154Entities();
 
         public Editor()
         {
@@ -28,11 +28,13 @@ namespace Viewer
 
         public Editor(dat154Entities context) : this()
         {
-            entities = context;
+            dbContext = context;
         }
 
         public Editor(dat154Entities context, student s) : this()
         {
+            dbContext = context;
+
             if (s != null)
             {
                 id.Text = s.id.ToString();
@@ -40,6 +42,51 @@ namespace Viewer
                 age.Text = s.studentage.ToString();
             }
             
+        }
+
+        private void Add_Student(object sender, RoutedEventArgs e)
+        {
+            student student = new student();
+            student.id = int.Parse(id.Text);
+            student.studentname = name.Text;
+            student.studentage = int.Parse(age.Text);
+
+            dbContext.student.Add(student);
+            dbContext.SaveChanges();
+
+            ClearFields();
+        }
+
+        private void Delete_Student(object sender, RoutedEventArgs e)
+        {
+            int sid = int.Parse(id.Text);
+            student student = dbContext.student.Where(stud => stud.id == sid).FirstOrDefault();
+            if (student != null)
+            {
+                dbContext.student.Remove(student);
+                dbContext.SaveChanges();
+            }
+            ClearFields();
+        }
+
+        private void Edit_Student(object sender, RoutedEventArgs e)
+        {
+            int sid = int.Parse(id.Text);
+            student student = dbContext.student.Where(stud => stud.id == sid).FirstOrDefault();
+
+            if (student != null)
+            {
+                if(!name.Text.Equals("")) student.studentname = name.Text;
+                if(!age.Text.Equals("")) student.studentage = int.Parse(age.Text);
+
+                dbContext.SaveChanges();
+            }
+            ClearFields();
+        }
+
+        private void ClearFields()
+        {
+            id.Text = name.Text = age.Text = "";
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Viewer
     /// </summary>
     public partial class Grades : Window
     {
-        private dat154Entities entities = new dat154Entities();
+        private dat154Entities dbContext = new dat154Entities();
         private DbSet<grade> grade;
 
         public Grades()
@@ -30,8 +30,8 @@ namespace Viewer
 
         public Grades(dat154Entities context) : this()
         {
-            entities = context;
-            grade = entities.grade;
+            dbContext = context;
+            grade = dbContext.grade;
 
             grade.Load();
             gradeList.DataContext = grade.Local;

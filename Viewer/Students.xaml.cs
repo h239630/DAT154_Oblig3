@@ -20,7 +20,7 @@ namespace Viewer
     /// </summary>
     public partial class Students : Window
     {
-        private dat154Entities entities = new dat154Entities();
+        private dat154Entities dbContext = new dat154Entities();
         private DbSet<student> student;
         public Students()
         {
@@ -28,9 +28,9 @@ namespace Viewer
         }
         public Students(dat154Entities context) : this()
         {
-            entities = context;
+            dbContext = context;
 
-            student = entities.student;
+            student = dbContext.student;
 
             student.Load();
             studentList.DataContext = student.Local;
@@ -49,10 +49,10 @@ namespace Viewer
             }
         }
 
-        private void Manage_Students(object sender, RoutedEventArgs e)
+        private void Edit(object sender, RoutedEventArgs e)
         {
             student student = (student)studentList.SelectedItem;
-            new Editor(entities, student).ShowDialog(); 
+            new Editor(dbContext, student).ShowDialog(); 
         }
     }
 }
