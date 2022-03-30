@@ -66,6 +66,7 @@ namespace Viewer
                 dbContext.student.Remove(student);
                 dbContext.SaveChanges();
             }
+            MessageBox.Show("Student deleted!");
             ClearFields();
         }
 
@@ -81,12 +82,39 @@ namespace Viewer
 
                 dbContext.SaveChanges();
             }
+            MessageBox.Show("Student edited succesfully!");
             ClearFields();
         }
 
         private void ClearFields()
         {
             id.Text = name.Text = age.Text = "";
+        }
+
+        private void UpdateFields(object sender, TextChangedEventArgs e)
+        {
+            if (id.Text == "")
+            {
+                ClearFields();
+                return;
+            }
+            else
+            {
+                int sid = int.Parse(id.Text);
+
+                if (!sid.Equals(""))
+                {
+                    student student = dbContext.student.Where(stud => stud.id == sid).FirstOrDefault();
+                    if (student != null)
+                    {
+                        name.Text = student.studentname;
+                        age.Text = student.studentage.ToString();
+                    } else
+                    {
+                        name.Text = age.Text = "";
+                    }
+                }
+            }
         }
     }
 }

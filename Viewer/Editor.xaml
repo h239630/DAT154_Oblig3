@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Viewer"
         mc:Ignorable="d"
-        Title="Editor" Height="400" Width="800"
+        Title="Editor" Height="240" Width="800"
         Background="BlanchedAlmond">
-    <Grid>
-        <TextBox x:Name="id" HorizontalAlignment="Right" Margin="0,0,580,254" TextAlignment="Center" TextWrapping="Wrap" Width="120" FontSize="20" FontWeight="Bold" Height="30" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="name" HorizontalAlignment="Center" Margin="0,0,0,254" TextAlignment="Center" TextWrapping="Wrap" Width="280" FontSize="20" FontWeight="Bold" Height="30" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="age" Margin="0,0,109,254" TextAlignment="Center" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
-        <Label Content="ID" Margin="0,0,580,287" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" Width="120" Height="37" VerticalAlignment="Bottom"/>
-        <Label Content="Student name" HorizontalAlignment="Center" Margin="0,0,0,287" Width="280" FontWeight="Bold" FontSize="20" Height="37" VerticalAlignment="Bottom"/>
-        <Label Content="Age" Margin="0,0,109,287" FontWeight="Bold" FontSize="20" Height="37" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
-        <Button Content="Add new Student" BorderThickness="4px" HorizontalAlignment="Left" Margin="80,220,0,0" VerticalAlignment="Top" Height="80" Width="160" FontWeight="Bold" FontSize="18" Click="Add_Student"/>
-        <Button Content="Delete Student" BorderThickness="4px" HorizontalAlignment="Right" Margin="0,220,320,0" VerticalAlignment="Top" Height="80" Width="160" FontSize="18" FontWeight="Bold" Click="Delete_Student"/>
-        <Button Content="Edit Student" BorderThickness="4px" HorizontalAlignment="Left" Margin="570,220,0,0" VerticalAlignment="Top" Height="80" Width="160" FontSize="18" FontWeight="Bold" Click="Edit_Student"/>
+    <Grid Height="238" VerticalAlignment="Top" HorizontalAlignment="Center" Width="800">
+        <TextBox x:Name="id" HorizontalAlignment="Right" Margin="0,62,580,0" TextAlignment="Center" TextWrapping="Wrap" Width="120" FontSize="20" FontWeight="Bold" Height="30" VerticalAlignment="Top" TextChanged="UpdateFields"/>
+        <TextBox x:Name="name" HorizontalAlignment="Center" Margin="0,62,0,0" TextAlignment="Center" TextWrapping="Wrap" Width="280" FontSize="20" FontWeight="Bold" Height="30" VerticalAlignment="Top" />
+        <TextBox x:Name="age" Margin="0,62,109,0" TextAlignment="Center" TextWrapping="Wrap" FontSize="20" FontWeight="Bold" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
+        <Label Content="ID" Margin="0,13,580,0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" Width="120" Height="37" VerticalAlignment="Top"/>
+        <Label Content="Student name" HorizontalAlignment="Center" Margin="0,13,0,0" Width="280" FontWeight="Bold" FontSize="20" Height="37" VerticalAlignment="Top"/>
+        <Label Content="Age" Margin="0,13,109,0" FontWeight="Bold" FontSize="20" Height="37" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100"/>
+        <Button Content="Add new Student" BorderThickness="4px" HorizontalAlignment="Left" Margin="80,134,0,0" VerticalAlignment="Top" Height="50" Width="160" FontWeight="Bold" FontSize="18" Click="Add_Student"/>
+        <Button Content="Delete Student" BorderThickness="4px" HorizontalAlignment="Center" Margin="0,134,0,0" VerticalAlignment="Top" Height="50" Width="160" FontSize="18" FontWeight="Bold" Click="Delete_Student"/>
+        <Button Content="Edit Student" BorderThickness="4px" HorizontalAlignment="Left" Margin="561,134,0,0" VerticalAlignment="Top" Height="50" Width="160" FontSize="18" FontWeight="Bold" Click="Edit_Student"/>
 
     </Grid>
 </Window>

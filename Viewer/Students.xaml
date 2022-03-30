@@ -13,7 +13,7 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Width="50" Header="ID" DisplayMemberBinding="{Binding Path=id}"/>
+                        <GridViewColumn Width="100" Header="ID" DisplayMemberBinding="{Binding Path=id}"/>
                         <GridViewColumn Width="200" Header="Student" DisplayMemberBinding="{Binding Path=studentname}"/>
                         <GridViewColumn Width="50" Header="Age" DisplayMemberBinding="{Binding Path=studentage}"/>
                     </GridView.Columns>
