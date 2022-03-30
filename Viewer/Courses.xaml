@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Viewer"
         mc:Ignorable="d"
-        Title="Courses" Height="450" Width="800">
+        Title="Courses" Height="600" Width="800"
+        Background="BlanchedAlmond">
     <Grid>
-        
+        <ListView Name="courseList" ItemsSource="{Binding}" Margin="100,0,100,84" Background="AliceBlue">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="100" Header="Code" DisplayMemberBinding="{Binding Path=coursecode}"/>
+                        <GridViewColumn Width="200" Header="Name" DisplayMemberBinding="{Binding Path=coursename}"/>
+                        <GridViewColumn Width="60" Header="Semester" DisplayMemberBinding="{Binding Path=semester}"/>
+                        <GridViewColumn Width="200" Header="Teacher" DisplayMemberBinding="{Binding Path=teacher}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--<Button Content="Manage Students" Margin="0,0,140,10" Width="100" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" />-->
+        <TextBox Name="SearchField" TextWrapping="Wrap" Text="" Background="LightBlue" Margin="100,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" TextChanged="Search"/>
+        <Label Content="Search for course by name:" Margin="100,0,0,35" FontWeight="Bold" HorizontalAlignment="Left" Width="180" Height="30" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

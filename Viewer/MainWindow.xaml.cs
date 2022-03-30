@@ -34,12 +34,12 @@ namespace Viewer
 
         private void View_Grades_Click(object sender, RoutedEventArgs e)
         {
-
+            new Grades(entities).ShowDialog();  
         }
 
         private void View_Courses_Click(object sender, RoutedEventArgs e)
         {
-
+            new Courses(entities).ShowDialog();
         }
     }
 }

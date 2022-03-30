@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,33 @@ namespace Viewer
     /// </summary>
     public partial class Courses : Window
     {
+        private dat154Entities entities = new dat154Entities();
+        private DbSet<course> course;
         public Courses()
         {
             InitializeComponent();
+        }
+
+        public Courses(dat154Entities context) : this()
+        {
+            entities = context;
+            course = entities.course;
+
+            course.Load();
+            courseList.DataContext = course.Local;
+        }
+
+        private void Search(object sender, TextChangedEventArgs e)
+        {
+            if (SearchField.Text == "")
+            {
+                if (course != null)
+                    courseList.DataContext = course.Local;
+            }
+            else
+            {
+                courseList.DataContext = course.Local.Where(course => course.coursename.Contains(SearchField.Text));
+            }
         }
     }
 }

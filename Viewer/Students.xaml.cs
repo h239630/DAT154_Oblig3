@@ -36,9 +36,9 @@ namespace Viewer
             studentList.DataContext = student.Local;
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Search(object sender, TextChangedEventArgs e)
         {
-            if (SearchField.Text == "Search for student by name..")
+            if (SearchField.Text == "")
             {
                 if (student != null)
                     studentList.DataContext = student.Local;
