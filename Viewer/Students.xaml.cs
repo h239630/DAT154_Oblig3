@@ -48,5 +48,11 @@ namespace Viewer
                 studentList.DataContext = student.Local.Where(student => student.studentname.Contains(SearchField.Text));
             }
         }
+
+        private void Manage_Students(object sender, RoutedEventArgs e)
+        {
+            student student = (student)studentList.SelectedItem;
+            new Editor(entities, student).ShowDialog(); 
+        }
     }
 }
