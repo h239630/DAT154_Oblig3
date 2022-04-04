@@ -15,40 +15,31 @@ using System.Windows.Shapes;
 
 namespace Viewer
 {
-    
-    public partial class Students : Window
+    public partial class SelectStudent : Window
     {
         private dat154Entities dbContext = new dat154Entities();
         private DbSet<student> student;
-        public Students()
+        private course course;
+
+        public SelectStudent()
         {
             InitializeComponent();
         }
-        public Students(dat154Entities context) : this()
+
+        public SelectStudent(dat154Entities context, course SelectedCourse) : this()
         {
             dbContext = context;
             student = dbContext.student;
             student.Load();
             studentList.DataContext = student.Local;
+            course = SelectedCourse;
         }
 
-        private void Search(object sender, TextChangedEventArgs e)
-        {
-            if (SearchField.Text == "")
-            {
-                if (student != null)
-                    studentList.DataContext = student.Local;
-            }
-            else
-            {
-                studentList.DataContext = student.Local.Where(student => student.studentname.Contains(SearchField.Text));
-            }
-        }
-
-        private void Edit(object sender, RoutedEventArgs e)
+        private void Add(object sender, RoutedEventArgs e)
         {
             student student = (student)studentList.SelectedItem;
-            new Editor(dbContext, student).ShowDialog(); 
+            //dbContext.course.
+            //dbContext.SaveChanges();
         }
     }
 }

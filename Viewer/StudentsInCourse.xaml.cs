@@ -21,6 +21,7 @@ namespace Viewer
         private dat154Entities dbContext = new dat154Entities();
         private DbSet<student> student;
         private DbSet<grade> grade;
+        private course course;
 
 
         public StudentsInCourse()
@@ -35,11 +36,11 @@ namespace Viewer
         public StudentsInCourse(dat154Entities context, course SelectedCourse) : this()
         {
             dbContext = context;
-
             grade = dbContext.grade;
             student = dbContext.student;
             grade.Load();
             student.Load();
+            course = SelectedCourse;
 
             if (SelectedCourse != null)
             {
@@ -65,7 +66,7 @@ namespace Viewer
 
         private void Add_Student(object sender, RoutedEventArgs e)
         {
-
+            new SelectStudent(dbContext, course);
         }
 
         private void Remove_Student(object sender, RoutedEventArgs e)

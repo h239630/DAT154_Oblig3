@@ -1,0 +1,25 @@
+﻿<Window x:Class="Viewer.SelectStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Viewer"
+        mc:Ignorable="d"
+        Title="Select Student" Height="600" Width="600"
+        Background="BlanchedAlmond">
+
+    <Grid>
+        <ListView Name="studentList" ItemsSource="{Binding}" Margin="100,0,100,84" Background="AliceBlue" MouseDoubleClick="Add">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="100" Header="ID" DisplayMemberBinding="{Binding Path=id}"/>
+                        <GridViewColumn Width="200" Header="Student" DisplayMemberBinding="{Binding Path=studentname}"/>
+                        <GridViewColumn Width="50" Header="Age" DisplayMemberBinding="{Binding Path=studentage}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label Content="Double-Click a student to add to course" Margin="0,522,0,0" FontWeight="Bold" HorizontalAlignment="Center" Width="240" Height="30" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
