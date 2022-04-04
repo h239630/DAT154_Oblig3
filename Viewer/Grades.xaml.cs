@@ -22,6 +22,7 @@ namespace Viewer
     {
         private dat154Entities dbContext = new dat154Entities();
         private DbSet<grade> grade;
+        private bool showFailed = false;
 
         public Grades()
         {
@@ -46,29 +47,87 @@ namespace Viewer
 
         public void Search(object sender, TextChangedEventArgs e)
         {
-            if (SearchField.Text == "")
+            if (FilterField != null)
             {
-                if (grade != null)
-                    gradeList.DataContext = grade.Local;
+                if (SearchField.Text == "")
+                {
+                    if (grade != null)
+                        gradeList.DataContext = grade.Local
+                        .Where(grade => char.Parse(grade.grade1.ToLower()) <= char.Parse(FilterField.Text.Substring(0, 1).ToLower()));
+                }
+                else
+                {
+                    gradeList.DataContext = grade.Local
+                        .Where(grade => char.Parse(grade.grade1.ToLower()) <= char.Parse(FilterField.Text.Substring(0, 1).ToLower()))
+                        .Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
+                }
             }
             else
             {
-                gradeList.DataContext = grade.Local.Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
+                if (SearchField.Text == "")
+                {
+                    if (grade != null)
+                        gradeList.DataContext = grade.Local;
+                }
+                else
+                {
+                    gradeList.DataContext = grade.Local.Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
+                }
             }
+            
         }
 
         private void Filter(object sender, TextChangedEventArgs e)
         {
-            if (FilterField.Text == "")
+            // Can filter grades on a spesific student
+            if (SearchField.Text != "")
             {
-                if (grade != null)
-                    gradeList.DataContext = grade.Local;
-            }
+                if (FilterField.Text == "")
+                {
+                    if (grade != null)
+                        gradeList.DataContext = grade.Local.Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
+                }
+                else
+                {
+                    char g = char.Parse(FilterField.Text.Substring(0, 1).ToLower());
+                    gradeList.DataContext = grade.Local
+                        .Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)))
+                        .Where(grade => char.Parse(grade.grade1.ToLower()) <= g);
+                }
+            } 
+            // Filter grades on all students
             else
             {
-                char g = char.Parse(FilterField.Text.Substring(0,1).ToLower());
-                gradeList.DataContext = grade.Local.Where(grade => char.Parse(grade.grade1.ToLower()) <= g);
+                if (FilterField.Text == "")
+                {
+                    if (grade != null)
+                        gradeList.DataContext = grade.Local;
+                }
+                else
+                {
+                    char g = char.Parse(FilterField.Text.Substring(0, 1).ToLower());
+                    gradeList.DataContext = grade.Local.Where(grade => char.Parse(grade.grade1.ToLower()) <= g);
+                }
             }
+                
+            
+        }
+
+        private void Failed_Click(object sender, RoutedEventArgs e)
+        {
+            if (!showFailed)
+            {
+                Failed.Content = "Show all students";
+                gradeList.DataContext = grade.Local.Where(grade => char.Parse(grade.grade1) == 'F');
+                showFailed = true;
+            } 
+            else
+            {
+                Failed.Content = "Show failed students";
+                gradeList.DataContext = grade.Local;
+                showFailed = false;
+            }
+            
         }
     }
 }

@@ -27,5 +27,7 @@
         <TextBox Name="FilterField" TextWrapping="Wrap" Text="" Background="LightBlue" Margin="350,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" TextChanged="Filter"/>
         <Label Content="Filter grades by grade:" Margin="350,0,0,35" FontWeight="Bold" HorizontalAlignment="Left" Width="236" Height="30" VerticalAlignment="Bottom"/>
 
+        <Button Name="Failed" Content="Show failed students" Margin="600,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Click="Failed_Click"/>
+
     </Grid>
 </Window>
