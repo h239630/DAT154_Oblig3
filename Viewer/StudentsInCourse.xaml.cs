@@ -37,7 +37,9 @@ namespace Viewer
             dbContext = context;
 
             grade = dbContext.grade;
+            student = dbContext.student;
             grade.Load();
+            student.Load();
 
             if (SelectedCourse != null)
             {
@@ -60,10 +62,16 @@ namespace Viewer
             }
         }
 
-        private void Edit(object sender, RoutedEventArgs e)
+
+        private void Add_Student(object sender, RoutedEventArgs e)
         {
-            student student = (student)studentGradeList.SelectedItem;
-            new Editor(dbContext, student).ShowDialog();
+
+        }
+
+        private void Remove_Student(object sender, RoutedEventArgs e)
+        {
+            // student student = (student)studentList.SelectedItem;
+
         }
     }
 }

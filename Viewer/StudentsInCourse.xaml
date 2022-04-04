@@ -21,8 +21,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Edit Student" Margin="0,0,140,10" Width="100" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Edit" />
         <TextBox Name="SearchField" TextWrapping="Wrap" Text="" Background="LightBlue" Margin="100,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" TextChanged="Search"/>
         <Label Content="Search for student by name:" Margin="100,0,0,35" FontWeight="Bold" HorizontalAlignment="Left" Width="180" Height="30" VerticalAlignment="Bottom"/>
+        <Button x:Name="Add" Content="Add student" HorizontalAlignment="Left" Margin="403,547,0,0" VerticalAlignment="Top" Click="Add_Student" Width="85"/>
+        <Button x:Name="Remove" Content="Remove student" HorizontalAlignment="Left" Margin="510,547,0,0" VerticalAlignment="Top" Click="Remove_Student" Width="100"/>
+
     </Grid>
 </Window>

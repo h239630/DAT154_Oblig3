@@ -47,6 +47,7 @@ namespace Viewer
 
         public void Search(object sender, TextChangedEventArgs e)
         {
+            // Search for a student with a filtered grade
             if (FilterField.Text != "")
             {
                 if (SearchField.Text == "")
@@ -59,10 +60,11 @@ namespace Viewer
                 {
                     gradeList.DataContext = grade.Local
                         .Where(grade => char.Parse(grade.grade1.ToLower()) <= char.Parse(FilterField.Text.Substring(0, 1).ToLower()))
-                        .Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
+                        .Where(grade => grade.student.studentname.Contains(SearchField.Text));
                 }
             }
             else
+            // Search in all students
             {
                 if (SearchField.Text == "")
                 {
@@ -71,7 +73,7 @@ namespace Viewer
                 }
                 else
                 {
-                    gradeList.DataContext = grade.Local.Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
+                    gradeList.DataContext = grade.Local.Where(grade => grade.student.studentname.Contains(SearchField.Text));
                 }
             }
             
@@ -85,18 +87,18 @@ namespace Viewer
                 if (FilterField.Text == "")
                 {
                     if (grade != null)
-                        gradeList.DataContext = grade.Local.Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
+                        gradeList.DataContext = grade.Local.Where(grade => grade.student.studentname.Contains(SearchField.Text));
                 }
                 else
                 {
                     char g = char.Parse(FilterField.Text.Substring(0, 1).ToLower());
                     gradeList.DataContext = grade.Local
-                        .Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)))
+                        .Where(grade => grade.student.studentname.Contains(SearchField.Text))
                         .Where(grade => char.Parse(grade.grade1.ToLower()) <= g);
                 }
             } 
-            // Filter grades on all students
             else
+            // Filter grades on all students
             {
                 if (FilterField.Text == "")
                 {
@@ -115,6 +117,8 @@ namespace Viewer
 
         private void Failed_Click(object sender, RoutedEventArgs e)
         {
+            SearchField.Text = FilterField.Text = "";
+
             if (!showFailed)
             {
                 Failed.Content = "Show all students";
