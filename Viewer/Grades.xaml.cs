@@ -47,7 +47,7 @@ namespace Viewer
 
         public void Search(object sender, TextChangedEventArgs e)
         {
-            if (FilterField != null)
+            if (FilterField.Text != "")
             {
                 if (SearchField.Text == "")
                 {
