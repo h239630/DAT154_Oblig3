@@ -46,7 +46,7 @@ namespace Viewer
             }
             else
             {
-                gradeList.DataContext = grade.Local.Where(grade => grade.studentid.Equals(SearchField.Text));
+                gradeList.DataContext = grade.Local.Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
             }
         }
     }

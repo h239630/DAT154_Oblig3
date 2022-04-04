@@ -21,6 +21,8 @@ namespace Viewer
         private dat154Entities dbContext = new dat154Entities();
         private DbSet<student> student;
         private DbSet<grade> grade;
+
+
         public StudentsInCourse()
         {
             InitializeComponent();
@@ -29,29 +31,32 @@ namespace Viewer
         {
             dbContext = context;
 
-            student = dbContext.student;
-            grade = dbContext.grade;
+        }
+        public StudentsInCourse(dat154Entities context, course SelectedCourse) : this()
+        {
+            dbContext = context;
 
-            student.Load();
+            grade = dbContext.grade;
             grade.Load();
 
-            student stud = new student();
-
-            stud.grade = grade.Local;
-
-            studentGradeList.DataContext = student.Local;
+            if (SelectedCourse != null)
+            {
+                studentGradeList.DataContext = grade.Local.Where(course => course.coursecode.Equals(SelectedCourse.coursecode));
+            }
         }
 
-        private void Search(object sender, TextChangedEventArgs e)
+
+            private void Search(object sender, TextChangedEventArgs e)
         {
+            
             if (SearchField.Text == "")
             {
                 if (student != null)
-                    studentGradeList.DataContext = student.Local;
+                    studentGradeList.DataContext = grade.Local;
             }
             else
             {
-                studentGradeList.DataContext = student.Local.Where(student => student.studentname.Contains(SearchField.Text));
+                studentGradeList.DataContext = grade.Local.Where(grade => grade.student.studentname.Contains(SearchField.Text));
             }
         }
 

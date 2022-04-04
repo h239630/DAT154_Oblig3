@@ -13,10 +13,10 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Width="100" Header="ID" DisplayMemberBinding="{Binding Path=id}"/>
-                        <GridViewColumn Width="200" Header="Student" DisplayMemberBinding="{Binding Path=studentname}"/>
-                        <GridViewColumn Width="60" Header="Age" DisplayMemberBinding="{Binding Path=studentage}"/>
-                        <GridViewColumn Width="60" Header="Grade" DisplayMemberBinding="{Binding Path=grade}"/>
+                        <GridViewColumn Width="100" Header="ID" DisplayMemberBinding="{Binding Path=studentid}"/>
+                        <GridViewColumn Width="200" Header="Student" DisplayMemberBinding="{Binding Path=student.studentname}"/>
+                        <GridViewColumn Width="60" Header="Age" DisplayMemberBinding="{Binding Path=student.studentage}"/>
+                        <GridViewColumn Width="60" Header="Grade" DisplayMemberBinding="{Binding Path=grade1}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

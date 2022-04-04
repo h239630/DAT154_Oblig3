@@ -36,7 +36,8 @@ namespace Viewer
 
         public void View(object sender, RoutedEventArgs e)
         {
-            new StudentsInCourse(dbContext).ShowDialog();
+            course course = (course)courseList.SelectedItem;
+            new StudentsInCourse(dbContext, course).ShowDialog();
         }
     }
 }
