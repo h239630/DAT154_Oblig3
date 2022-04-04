@@ -91,27 +91,53 @@ namespace Viewer
             id.Text = name.Text = age.Text = "";
         }
 
-        private void UpdateFields(object sender, TextChangedEventArgs e)
+        //private void UpdateIDField(object sender, TextChangedEventArgs e)
+        //{
+        //    if (id.Text == "")
+        //    {
+        //        ClearFields();
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        int sid = int.Parse(id.Text);
+
+        //        if (!sid.Equals(""))
+        //        {
+        //            student student = dbContext.student.Where(stud => stud.id == sid).FirstOrDefault();
+        //            if (student != null)
+        //            {
+        //                name.Text = student.studentname;
+        //                age.Text = student.studentage.ToString();
+        //            } 
+        //            else
+        //            {
+        //                name.Text = age.Text = "";
+        //            }
+        //        }
+        //    }
+        //}
+
+        private void UpdateNameField(object sender, TextChangedEventArgs e)
         {
-            if (id.Text == "")
+            if (name.Text == "")
             {
                 ClearFields();
                 return;
             }
             else
             {
-                int sid = int.Parse(id.Text);
-
-                if (!sid.Equals(""))
+                if (!name.Text.Equals(""))
                 {
-                    student student = dbContext.student.Where(stud => stud.id == sid).FirstOrDefault();
+                    student student = dbContext.student.Where(stud => stud.studentname.Contains(name.Text)).FirstOrDefault();
                     if (student != null)
                     {
-                        name.Text = student.studentname;
+                        id.Text = student.id.ToString();
                         age.Text = student.studentage.ToString();
-                    } else
+                    }
+                    else
                     {
-                        name.Text = age.Text = "";
+                        id.Text = age.Text = "";
                     }
                 }
             }

@@ -27,7 +27,7 @@
         <TextBox Name="FilterField" TextWrapping="Wrap" Text="" Background="LightBlue" Margin="552,0,0,25" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="30" TextChanged="Filter"/>
         <Label Content="Show grades greater and equal:" Margin="353,0,0,20" FontWeight="Bold" HorizontalAlignment="Left" Width="194" Height="30" VerticalAlignment="Bottom"/>
 
-        <Button Name="Failed" Content="Show failed students" Margin="700,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" Click="Failed_Click"/>
+        <Button Name="Failed" Content="Show failed students" Margin="698,0,0,22" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="142" Click="Failed_Click"/>
 
     </Grid>
 </Window>

@@ -9,7 +9,7 @@
         Background="BlanchedAlmond">
 
     <Grid>
-        <ListView Name="studentGradeList" ItemsSource="{Binding}" Margin="100,0,100,84" Background="AliceBlue" MouseDoubleClick="Edit">
+        <ListView Name="studentGradeList" ItemsSource="{Binding}" Margin="100,0,100,84" Background="AliceBlue">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
