@@ -37,6 +37,13 @@ namespace Viewer
             gradeList.DataContext = grade.Local;
         }
 
+        public Grades(dat154Entities context, grade grade) : this()
+        {
+            dbContext = context;
+
+
+        }
+
         public void Search(object sender, TextChangedEventArgs e)
         {
             if (SearchField.Text == "")
@@ -47,6 +54,20 @@ namespace Viewer
             else
             {
                 gradeList.DataContext = grade.Local.Where(grade => grade.studentid.Equals(int.Parse(SearchField.Text)));
+            }
+        }
+
+        private void Filter(object sender, TextChangedEventArgs e)
+        {
+            if (FilterField.Text == "")
+            {
+                if (grade != null)
+                    gradeList.DataContext = grade.Local;
+            }
+            else
+            {
+                char g = char.Parse(FilterField.Text.Substring(0,1).ToLower());
+                gradeList.DataContext = grade.Local.Where(grade => char.Parse(grade.grade1.ToLower()) <= g);
             }
         }
     }

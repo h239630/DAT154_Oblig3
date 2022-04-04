@@ -5,22 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Viewer"
         mc:Ignorable="d"
-        Title="Grades" Height="600" Width="600"
+        Title="Grades" Height="600" Width="1000"
         Background="BlanchedAlmond">
     <Grid>
-        <ListView Name="gradeList" ItemsSource="{Binding}" Margin="100,0,100,84" Background="AliceBlue">
+        <ListView Name="gradeList" ItemsSource="{Binding}" Margin="50,0,50,84" Background="AliceBlue">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Width="100" Header="Student ID" DisplayMemberBinding="{Binding Path=studentid}"/>
+                        <GridViewColumn Width="200" Header="Student Name" DisplayMemberBinding="{Binding Path=student.studentname}"/>
                         <GridViewColumn Width="100" Header="Course Code" DisplayMemberBinding="{Binding Path=coursecode}"/>
+                        <GridViewColumn Width="200" Header="Course Name" DisplayMemberBinding="{Binding Path=course.coursename}"/>
                         <GridViewColumn Width="50" Header="Grade" DisplayMemberBinding="{Binding Path=grade1}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
         </ListView>
-        <!--<Button Content="Manage Students" Margin="0,0,140,10" Width="100" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" />-->
         <TextBox Name="SearchField" TextWrapping="Wrap" Text="" Background="LightBlue" Margin="100,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" TextChanged="Search"/>
         <Label Content="Search for student by ID:" Margin="100,0,0,35" FontWeight="Bold" HorizontalAlignment="Left" Width="180" Height="30" VerticalAlignment="Bottom"/>
+
+        <TextBox Name="FilterField" TextWrapping="Wrap" Text="" Background="LightBlue" Margin="350,0,0,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="200" TextChanged="Filter"/>
+        <Label Content="Filter grades by grade:" Margin="350,0,0,35" FontWeight="Bold" HorizontalAlignment="Left" Width="236" Height="30" VerticalAlignment="Bottom"/>
+
     </Grid>
 </Window>

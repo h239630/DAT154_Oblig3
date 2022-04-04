@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Viewer"
         mc:Ignorable="d"
-        Title="Menu" Height="200" Width="800"
+        Title="Menu" Height="300" Width="1000"
         Background="BlanchedAlmond">
     <Grid>
-        <Button x:Name="View_Students" Content="View Students" Margin="60,65,540,64" Click="View_Students_Click"/>
-        <Button x:Name="View_Grades" Content="View Student Grades" Margin="300,65,300,64" Click="View_Grades_Click"/>
-        <Button x:Name="View_Courses" Content="View Courses" Margin="540,65,60,64" Click="View_Courses_Click"/>
-
+        <Button x:Name="View_Students" Content="View Students" Margin="0,0,640,59" Click="View_Students_Click" Width="200" Height="55" BorderThickness="1,1,1,1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Button x:Name="View_Grades" Content="View Student Grades" Margin="0,0,0,59" Click="View_Grades_Click" Width="200" Height="55" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <Button x:Name="View_Courses" Content="View Courses" Margin="0,0,160,59" Click="View_Courses_Click" Width="200" Height="55" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Label Content="Choose what you want to do.." Margin="0,70,0,0" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Width="296" Height="53" VerticalAlignment="Top"/>
     </Grid>
 </Window>

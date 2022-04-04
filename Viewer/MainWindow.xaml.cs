@@ -41,5 +41,6 @@ namespace Viewer
         {
             new Courses(dbContext).ShowDialog();
         }
+
     }
 }
