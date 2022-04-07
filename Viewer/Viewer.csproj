@@ -70,6 +70,9 @@
     <Compile Include="course.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="CourseEditor.xaml.cs">
+      <DependentUpon>CourseEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Courses.xaml.cs">
       <DependentUpon>Courses.xaml</DependentUpon>
     </Compile>
@@ -87,9 +90,6 @@
     <Compile Include="Grades.xaml.cs">
       <DependentUpon>Grades.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SelectStudent.xaml.cs">
-      <DependentUpon>SelectStudent.xaml</DependentUpon>
-    </Compile>
     <Compile Include="student.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -99,6 +99,10 @@
     <Compile Include="StudentsInCourse.xaml.cs">
       <DependentUpon>StudentsInCourse.xaml</DependentUpon>
     </Compile>
+    <Page Include="CourseEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Courses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,10 +137,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SelectStudent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Students.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

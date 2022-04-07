@@ -53,7 +53,7 @@ namespace Viewer
 
             dbContext.student.Add(student);
             dbContext.SaveChanges();
-
+            MessageBox.Show(name.Text + " was added!");
             ClearFields();
         }
 
@@ -66,7 +66,7 @@ namespace Viewer
                 dbContext.student.Remove(student);
                 dbContext.SaveChanges();
             }
-            MessageBox.Show("Student deleted!");
+            MessageBox.Show(name.Text + " was deleted!");
             ClearFields();
         }
 
@@ -82,7 +82,7 @@ namespace Viewer
 
                 dbContext.SaveChanges();
             }
-            MessageBox.Show("Student edited succesfully!");
+            MessageBox.Show("Information about " + name.Text + " has been edited.");
             ClearFields();
         }
 
@@ -91,56 +91,33 @@ namespace Viewer
             id.Text = name.Text = age.Text = "";
         }
 
-        //private void UpdateIDField(object sender, TextChangedEventArgs e)
-        //{
-        //    if (id.Text == "")
-        //    {
-        //        ClearFields();
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        int sid = int.Parse(id.Text);
-
-        //        if (!sid.Equals(""))
-        //        {
-        //            student student = dbContext.student.Where(stud => stud.id == sid).FirstOrDefault();
-        //            if (student != null)
-        //            {
-        //                name.Text = student.studentname;
-        //                age.Text = student.studentage.ToString();
-        //            } 
-        //            else
-        //            {
-        //                name.Text = age.Text = "";
-        //            }
-        //        }
-        //    }
-        //}
-
-        private void UpdateNameField(object sender, TextChangedEventArgs e)
+        private void UpdateIDField(object sender, TextChangedEventArgs e)
         {
-            if (name.Text == "")
+            if (id.Text == "")
             {
                 ClearFields();
                 return;
             }
             else
             {
-                if (!name.Text.Equals(""))
+                int sid = int.Parse(id.Text);
+
+                if (!sid.Equals(""))
                 {
-                    student student = dbContext.student.Where(stud => stud.studentname.Contains(name.Text)).FirstOrDefault();
+                    student student = dbContext.student.Where(stud => stud.id == sid).FirstOrDefault();
                     if (student != null)
                     {
-                        id.Text = student.id.ToString();
+                        name.Text = student.studentname;
                         age.Text = student.studentage.ToString();
                     }
                     else
                     {
-                        id.Text = age.Text = "";
+                        name.Text = age.Text = "";
                     }
                 }
             }
         }
+
+
     }
 }

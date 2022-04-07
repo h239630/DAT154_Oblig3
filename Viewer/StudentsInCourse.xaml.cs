@@ -19,9 +19,8 @@ namespace Viewer
     public partial class StudentsInCourse : Window
     {
         private dat154Entities dbContext = new dat154Entities();
-        private DbSet<student> student;
         private DbSet<grade> grade;
-        private course course;
+        private course thisCourse;
 
 
         public StudentsInCourse()
@@ -37,42 +36,61 @@ namespace Viewer
         {
             dbContext = context;
             grade = dbContext.grade;
-            student = dbContext.student;
             grade.Load();
-            student.Load();
-            course = SelectedCourse;
+            thisCourse = SelectedCourse;
+            updateView();
 
-            if (SelectedCourse != null)
-            {
-                studentGradeList.DataContext = grade.Local.Where(course => course.coursecode.Equals(SelectedCourse.coursecode));
-            }
         }
 
 
-            private void Search(object sender, TextChangedEventArgs e)
+        private void Search(object sender, TextChangedEventArgs e)
         {
-            
-            if (SearchField.Text == "")
+            if (SearchField.Text != "")
             {
-                if (student != null)
-                    studentGradeList.DataContext = grade.Local;
-            }
+                //studentGradeList.DataContext = grade.Local.Where(grade => grade.student.studentname.Contains(SearchField.Text));
+
+                studentGradeList.DataContext = from grade in grade.Local
+                                               where grade.coursecode.Equals(thisCourse.coursecode)
+                                               where grade.student.studentname.Contains(SearchField.Text)
+                                               select grade;
+            } 
             else
             {
-                studentGradeList.DataContext = grade.Local.Where(grade => grade.student.studentname.Contains(SearchField.Text));
+                studentGradeList.DataContext = grade.Local.Where(course => course.coursecode.Equals(thisCourse.coursecode));
             }
+
+           
         }
 
-
-        private void Add_Student(object sender, RoutedEventArgs e)
-        {
-            new SelectStudent(dbContext, course);
-        }
 
         private void Remove_Student(object sender, RoutedEventArgs e)
         {
-            // student student = (student)studentList.SelectedItem;
+            grade grade = (grade) studentGradeList.SelectedItem;
 
+            if (grade != null)
+            {
+                string studentname = dbContext.student.Find(grade.studentid).studentname; 
+                dbContext.grade.Remove(grade);
+                dbContext.SaveChanges();
+                MessageBox.Show(studentname + " has been removed from the course.");
+            } 
+            else
+            {
+                MessageBox.Show("No student selected, please select one to remove.");
+            }
+            updateView();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            new CourseEditor(dbContext, thisCourse).ShowDialog();
+            updateView();
+            dbContext.SaveChanges();
+        }
+
+        private void updateView()
+        {
+            studentGradeList.DataContext = grade.Local.Where(course => course.coursecode.Equals(thisCourse.coursecode));
         }
     }
 }
